@@ -37,17 +37,16 @@ public class ProductController {
     	return ResponseEntity.ok(newProduct); 
     }
  // Get all products 
-    @SuppressWarnings("unchecked")
-	@GetMapping("/products") 
+    @GetMapping("/products") 
     public List<Product> getAllProducts() 
     { 
     	return  productService.getAllProducts(); 
     }
  // Get a product by ID 
     @GetMapping("/products/{id}") 
-    public ResponseEntity<ResponseEntity<Optional<Product>>> getProductById(@PathVariable Long id) 
+    public ResponseEntity<ResponseEntity<Product>> getProductById(@PathVariable Long id) 
     { 
-    	ResponseEntity<Optional<Product>> product = productService.fetchProductById(id); 
+    	ResponseEntity<Product> product = productService.fetchProductById(id); 
     	if (product != null) { 
     		return ResponseEntity.ok(product); 
     	} 
@@ -63,6 +62,7 @@ public class ProductController {
     { 
     	return productService.updateProduct(productId, product); 
     }
+    
  // Delete a product 
     @DeleteMapping(value = "/products/{productId}") 
     public String deleteProduct(@PathVariable Long productId) 

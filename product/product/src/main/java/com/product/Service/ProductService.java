@@ -34,13 +34,13 @@ public class ProductService {
 		return productRepository.findAll(); 
 	}
 	// Get a product by ID 
-	public ResponseEntity<Optional<Product> > 
+	public ResponseEntity<Product>  
 	fetchProductById(Long id) 
 	{ 
 		Optional<Product> product 
 			= productRepository.findById(id); 
 		if (product.isPresent()) { 
-			return ResponseEntity.ok(product); 
+			return ResponseEntity.ok().body(product.get()); 
 		} 
 		else { 
 			return ResponseEntity.notFound().build(); 
