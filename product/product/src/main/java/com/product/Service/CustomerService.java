@@ -22,8 +22,8 @@ public class CustomerService {
 public  Iterable<Customer> getAllCustomers(){
 	return customerRepository.findAll();
 }
-public Optional<Customer> getCustomer(Integer id) {
-    return customerRepository.findById(id);
+public Customer getCustomer(Integer id) {
+    return customerRepository.findById(id).get();
 }
 public Customer addNewCustomer(Customer newCustomer){
     Customer user = new Customer();

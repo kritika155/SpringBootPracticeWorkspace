@@ -38,7 +38,7 @@ public @ResponseBody Iterable<Customer> getAllCustomers(){
 
 // view specific customer
 @GetMapping("view/{id}")
-public Optional<Customer> getCustomer(@PathVariable Integer id) {
+public Customer getCustomer(@PathVariable Integer id) {
     return customerService.getCustomer(id);
 }
 
